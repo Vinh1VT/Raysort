@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 
 int* randomTab(int N){
     int* tab = malloc(sizeof(int)*N);
@@ -83,7 +84,7 @@ int* TriIns(int* tab,int N){
 }
 
 //programme de test, avec temps de tri
-/*int main(int argc, char** argv){
+int main(int argc, char** argv){
     if(argc <= 2){
         fprintf(stderr, "pas assez d'arguments\n");
         return EXIT_FAILURE;
@@ -97,7 +98,7 @@ int* TriIns(int* tab,int N){
     for(int i = 0; i<essai;i++){
         tab = randomTab(elem);
         start = clock();
-        TriSel(tab, elem);
+        TriIns(tab, elem);
         end = clock();
         if(!sorted(tab,elem)){
             fprintf(stderr,"erreur, tableau final non trié\n");
@@ -108,4 +109,4 @@ int* TriIns(int* tab,int N){
 
     printf("%f secondes pour un tableau de %d elements, en moyenne sur %d essai\n", (double)((float)somme/essai)/CLOCKS_PER_SEC,elem, essai);
     return EXIT_SUCCESS;
-}*/
+}
