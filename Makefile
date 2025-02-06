@@ -16,4 +16,9 @@ $(EXEC): $(OBJ)
 clean:
 	rm -f $(OBJ) $(EXEC)
 
-.PHONY: all clean
+l:
+	make clean
+	make
+	./$(EXEC)
+
+.PHONY: all clean l
