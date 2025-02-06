@@ -36,7 +36,10 @@ void TriBulles(int tab[],int nbElem){
         for(int i = nbElem-1; i>0 ;i--){
 
             for (int j = 0; j<i ;j++){
-                if(WindowShouldClose()) CloseWindow();
+                if(WindowShouldClose()){
+                    CloseWindow();
+                    return;
+                }
                 if(tab[j]>tab[j+1]){
                     echangerCase(tab, j, j+1);
                     BeginDrawing();
@@ -57,7 +60,10 @@ void TriIns(int tab[],int nbElem){
             j -= 1;
         }
         tab[j] = x;
-        if(WindowShouldClose()) CloseWindow();
+        if(WindowShouldClose()){
+            CloseWindow();
+            return;
+            }
         BeginDrawing();
         ClearBackground(BLACK);
         DrawTab(tab, nbElem);
@@ -75,7 +81,7 @@ int main(){
     SetTargetFPS(60);
 
     TriIns(tab, LONGUEUR);
-    CloseWindow();
+    if(!WindowShouldClose()) CloseWindow();
     free(tab);
     return EXIT_SUCCESS;
 }
