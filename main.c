@@ -1,8 +1,9 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "raylib.h"
 
-#define LONGUEUR 600
+#define LONGUEUR 500
 
 void echangerCase(int tab[],int i,int j){
     int temp = tab[j];
@@ -10,6 +11,16 @@ void echangerCase(int tab[],int i,int j){
     tab[i] = temp;
 }
 
+bool sorted(int tab[], unsigned int nbElem){
+    int precedent = tab[0];
+    for(int i = 1; i<nbElem;i++){
+        if(precedent>tab[i]){
+            return false;
+        }
+        precedent = tab[i];
+    }
+    return true;
+}
 
 void initTab(int tab[],int nbElem){
     for(int i=0; i<nbElem;i++){
@@ -71,6 +82,25 @@ void TriIns(int tab[],int nbElem){
     }
 }
 
+void BogoSort(int* tab, int nbElem){
+    while (!sorted(tab,nbElem)){
+        if(WindowShouldClose()){
+            CloseWindow();
+            return;
+            }
+
+        for(int i = 0; i<nbElem;i++){
+            int random = GetRandomValue(0, nbElem-1);
+            echangerCase(tab,i,random);
+        }
+
+        BeginDrawing();
+        ClearBackground(BLACK);
+        DrawTab(tab, nbElem);
+        EndDrawing();
+        WaitTime(0.1);
+    }
+}
 
 
 int main(){
@@ -80,8 +110,12 @@ int main(){
     initTab(tab, LONGUEUR);
     SetTargetFPS(60);
 
-    TriIns(tab, LONGUEUR);
-    if(!WindowShouldClose()) CloseWindow();
+    BogoSort(tab, LONGUEUR);
+
+    if(!WindowShouldClose()){
+        WaitTime(10);
+        CloseWindow();
+    }
     free(tab);
     return EXIT_SUCCESS;
 }
