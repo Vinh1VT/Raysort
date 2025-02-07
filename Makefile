@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c11
 LDFLAGS = -lraylib -lm
-SRC = main.c
+SRC = main.c tri.c
 OBJ = $(SRC:.c=.o)
 EXEC = Raysort
 
