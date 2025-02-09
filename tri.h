@@ -9,5 +9,6 @@ void initTab(int tab[], int nbElem);
 void TriBulle(int tab[], int nbElem);
 void TriIns(int tab[], int nbElem);
 void BogoSort(int tab[], int nbElem);
+void TriRadix(int tab[], int nbElem);
 
 #endif

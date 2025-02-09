@@ -14,7 +14,7 @@ int main(){
     initTab(tab, LONGUEUR);
     SetTargetFPS(60);
 
-    TriIns(tab, LONGUEUR);
+    TriRadix(tab, LONGUEUR);
 
     if(!WindowShouldClose()){
         WaitTime(10);
